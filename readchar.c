@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 
-#define MAX 5
+#define MAX 6
 
 int main(int argc, char *argv[])
 {
@@ -17,15 +17,15 @@ int main(int argc, char *argv[])
 
 	fd = open(argv[1], O_RDONLY);
 
-	if (fd < 0) {
+	if (fd == -1) {
 		perror("Error: ");
 		return fd;
 	}
 	
 	memset(buff, 0, MAX);
-	cnt = read(fd, buff, MAX);
+	cnt = read(fd, buff, 5);
 
-	if (cnt < 0) {
+	if (cnt == -1) {
 		close(fd);
 		perror("Error: ");
 		return cnt;
